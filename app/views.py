@@ -26,7 +26,8 @@ def aadhar(request):
         form = AadharForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, "student.html") 
+            return redirect('student')
+
     else:
         form = AadharForm()
 
@@ -42,14 +43,10 @@ def student(request):
         if form.is_valid():
             form.save()
             success = True
-            form = StudentForm()  # blank form
     else:
         form = StudentForm()
 
-    return render(request, "student.html", {
-        "form": form,
-        "success": success,
-        "all_adhars": all_adhars  
+    return render(request, "student.html", {"form": form,"success": success, "all_adhars": all_adhars  
     })
 
 
