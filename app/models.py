@@ -8,6 +8,7 @@ from django.core.validators import (MinValueValidator,
                                     MaxLengthValidator,
                                     )
 from django.core.exceptions import ValidationError
+from django import forms
 
 
 # Create your models here.
@@ -61,7 +62,7 @@ class Registration(models.Model):
     
 class Aadhar(models.Model):
     adhar_no=models.IntegerField(unique=True)
-    create_at=models.CharField(max_length=20)
+    create_at=models.CharField(max_length=20,blank=True, null=True)
 
     def __str__(self):
        return str(self.adhar_no)
@@ -72,3 +73,5 @@ class Student(models.Model):
     contact=models.IntegerField()
     adhar_no=models.OneToOneField(Aadhar,on_delete=models.PROTECT)
 
+
+    
