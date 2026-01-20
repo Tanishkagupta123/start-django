@@ -70,5 +70,5 @@ class Student(models.Model):
     name=models.CharField(max_length=20)
     email=models.EmailField()
     contact=models.IntegerField()
-    adhar_no=models.OneToOneField(Aadhar,on_delete=models.CASCADE)
+    adhar_no=models.OneToOneField(Aadhar,on_delete=models.PROTECT)
 
