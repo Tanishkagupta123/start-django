@@ -59,3 +59,16 @@ class Registration(models.Model):
     def __str__(self):
         return self.username
     
+class Aadhar(models.Model):
+    adhar_no=models.IntegerField(unique=True)
+    create_at=models.CharField(max_length=20)
+
+    def __str__(self):
+       return str(self.adhar_no)
+
+class Student(models.Model):
+    name=models.CharField(max_length=20)
+    email=models.EmailField()
+    contact=models.IntegerField()
+    adhar_no=models.OneToOneField(Aadhar,on_delete=models.CASCADE)
+
