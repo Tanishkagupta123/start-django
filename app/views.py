@@ -35,19 +35,13 @@ def aadhar(request):
 
 
 def student(request):
-    success = False
-    all_adhars = Aadhar.objects.all()  
-
-    if request.method == "POST":
-        form = StudentForm(request.POST)
+    success=False
+    all_adhars=Aadhar.objects.all()  
+    if request.method=="POST":
+        form=StudentForm(request.POST)
         if form.is_valid():
             form.save()
             success = True
     else:
         form = StudentForm()
-
-    return render(request, "student.html", {"form": form,"success": success, "all_adhars": all_adhars  
-    })
-
-
-
+    return render(request, "student.html", {"form": form,"success": success, "all_adhars": all_adhars   })

@@ -3,7 +3,7 @@ from django import forms
 from .models import Registration
 from .models import Aadhar
 from .models import Student
-
+ 
 
 
 # class Regform(forms.form):
