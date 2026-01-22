@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .forms import RegisterForm
 from django.shortcuts import render, redirect
 from .forms import AadharForm,StudentForm
-from .models import Aadhar
+from .models import Aadhar,Student
 
 
 
@@ -45,3 +45,31 @@ def student(request):
     else:
         form = StudentForm()
     return render(request, "student.html", {"form": form,"success": success, "all_adhars": all_adhars   })
+
+
+def forword(req):
+    #without related name attribute
+    #first method
+    # data=Student.objects.all()
+    # for i in data:
+    #     print(i.name,i.email,i.contact,i.adhar_no.adhar_no,i.adhar_no.create_at)
+
+
+     #second method
+     data=Student.objects.select_related('adhar_no')
+     print(data.query)
+     for i in data:
+        print(i.name,i.email,i.contact,i.adhar_no.adhar_no,i.adhar_no.create_at)
+
+def reverse(req):
+    #without related name attribute
+    # data= Aadhar.objects.all()
+    # print(data.query)
+    # for i in data:
+    #     print(i.adhar_no,i.create_at,i.student.name,i.student.email,i.student.contact)
+    
+
+    data= Aadhar.objects.select_related('student')
+    print(data.query)
+    for i in data:
+        print(i.adhar_no,i.create_at,i.student.name,i.student.email,i.student.contact)

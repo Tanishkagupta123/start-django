@@ -24,5 +24,9 @@ urlpatterns = [
     path('',home,name='home'),
     path('aadhar/',aadhar,name='aadhar'),
     path('student/',student,name='student'),
+    path('forword/',forword,name='forword'),
+    path('reverse/',reverse,name='reverse'),
+
+
 
 ]
