@@ -75,4 +75,23 @@ class Student(models.Model):
     adhar_no=models.OneToOneField(Aadhar,on_delete=models.PROTECT)  #related_name used only for reverse access
 
 
+class Department(models.Model):
+    d_name=models.CharField(max_length=20,null=True)
+    d_hod=models.CharField(max_length=30)
+
+    def __str__(self):
+       return str(self.d_name)
+
+
+class Employee(models.Model):
+    e_name=models.CharField(max_length=20)
+    e_email=models.EmailField()
+    e_contact=models.IntegerField()
+    e_dep=models.ForeignKey(Department,on_delete=models.CASCADE)
+
     
+    def __str__(self):
+       return str(self.e_name)
+
+
+    # e_dep=models.ForeignKey(Department,on_delete=models.CASCADE,related_name="dep")
