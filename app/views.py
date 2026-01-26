@@ -48,6 +48,7 @@ def student(request):
 
 
 def forword(req):
+    #  one to one
     #without related name attribute
     #first method
     # data=Student.objects.all()
@@ -56,12 +57,18 @@ def forword(req):
 
 
      #second method
-     data=Student.objects.select_related('adhar_no')
-     print(data.query)
-     for i in data:
-        print(i.name,i.email,i.contact,i.adhar_no.adhar_no,i.adhar_no.create_at)
+    #  data=Student.objects.select_related('adhar_no')
+    #  print(data.query)
+    #  for i in data:
+    #     print(i.name,i.email,i.contact,i.adhar_no.adhar_no,i.adhar_no.create_at)
+
+    # one to many............
+    pass
+
+
 
 def reverse(req):
+    # one to one
     #without related name attribute
     # data= Aadhar.objects.all()
     # print(data.query)
