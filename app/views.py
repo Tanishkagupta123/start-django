@@ -48,7 +48,9 @@ def student(request):
 
 
 def forword(req):
-    #  one to one
+
+    #  one to one.......................
+
     #without related name attribute
     #first method
     # data=Student.objects.all()
@@ -62,46 +64,46 @@ def forword(req):
     #  for i in data:
     #     print(i.name,i.email,i.contact,i.adhar_no.adhar_no,i.adhar_no.create_at)
 
-    # one to many............
-    pass
+
+    # one to many......................
+
+    # first method
+    # data=Employee.objects.all()
+    # for i in data:
+    #     print(i.e_dep.d_name,i.e_dep.d_hod)
+
+
+    # second method
+    data=Employee.objects.select_related('e_dep')
+    for i in data:
+        print(i.e_dep.d_name,i.e_dep.d_hod)
 
 
 
 def reverse(req):
-    # one to one
+
+    # one to one...................................
+
     #without related name attribute
+
     # data= Aadhar.objects.all()
     # print(data.query)
     # for i in data:
     #     print(i.adhar_no,i.create_at,i.student.name,i.student.email,i.student.contact)
     
 
-    data= Aadhar.objects.select_related('student')
-    print(data.query)
-    for i in data:
-        print(i.adhar_no,i.create_at,i.student.name,i.student.email,i.student.contact)
+    # data= Aadhar.objects.select_related('student')
+    # print(data.query)
+    # for i in data:
+    #     print(i.adhar_no,i.create_at,i.student.name,i.student.email,i.student.contact)
 
-# one to many............
+    # one to many.....................................
+    
 
-data=Employee.objects.all()
-for i in data:
-    print(i.e_dep.d_name,i.e_dep.d_hod)
-
-data=Employee.objects.select_related('e_dep')
-for i in data:
-    print(i.e_dep.d_name,i.e_dep.d_hod)
-
-
-
-# data=Department.objects.all
-def reverse(req):
     data=Department.objects.all()
     for i in data:
-        print(i.d_name,i.d_hod)
+        print(i.d_name,i.d_hod,end=',')
         data1=i.employee_set.all()
-
-
-        # print(i.employee_set.all())
         for i in data1:
             print(i.e_name,i.e_email,i.e_contact)
             
