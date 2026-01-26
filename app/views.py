@@ -97,13 +97,45 @@ def reverse(req):
     # for i in data:
     #     print(i.adhar_no,i.create_at,i.student.name,i.student.email,i.student.contact)
 
+
     # one to many.....................................
     
 
-    data=Department.objects.all()
+    # data=Department.objects.all()
+    # for i in data:
+    #     print(i.d_name,i.d_hod,end=',')
+    #     data1=i.employee_set.all()
+    #     for i in data1:
+    #         print(i.e_name,i.e_email,i.e_contact)
+
+
+
+    # data=Department.objects.prefetch_related('employee_set')
+    # for i in data:
+    #     print(i.d_name,i.d_hod,end=',')
+    #     data1=i.employee_set.all()
+    #     for i in data1:
+    #         print(i.e_name,i.e_email,i.e_contact)
+            
+
+    # e_dep=models.ForeignKey(Department,on_delete=models.CASCADE,related_name="dep")
+
+     # only use for related name
+            
+    
+    # data=Department.objects.all()
+    # for i in data:
+    #     print(i.d_name,i.d_hod,end=',')
+    #     data1=i.dep.all()
+    #     for i in data1:
+    #         print(i.e_name,i.e_email,i.e_contact)
+
+
+    data=Department.objects.prefetch_related('dep')
     for i in data:
         print(i.d_name,i.d_hod,end=',')
-        data1=i.employee_set.all()
+        data1=i.dep.all()
         for i in data1:
             print(i.e_name,i.e_email,i.e_contact)
+
             

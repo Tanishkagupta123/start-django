@@ -87,11 +87,12 @@ class Employee(models.Model):
     e_name=models.CharField(max_length=20)
     e_email=models.EmailField()
     e_contact=models.IntegerField()
-    e_dep=models.ForeignKey(Department,on_delete=models.CASCADE)
+    # e_dep=models.ForeignKey(Department,on_delete=models.CASCADE)  ## without related name
+
+
+    e_dep=models.ForeignKey(Department,on_delete=models.CASCADE,related_name="dep")  ## use for related_name
 
     
     def __str__(self):
        return str(self.e_name)
 
-
-    # e_dep=models.ForeignKey(Department,on_delete=models.CASCADE,related_name="dep")
